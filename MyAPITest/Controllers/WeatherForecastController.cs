@@ -7,6 +7,10 @@ using Microsoft.Extensions.Logging;
 
 namespace MyAPITest.Controllers
 {
+    /// <summary>
+    /// WeatherForecastController
+    /// </summary>
+    /// <seealso cref="Microsoft.AspNetCore.Mvc.ControllerBase" />
     [ApiController]
     [Route("[controller]")]
     public class WeatherForecastController : ControllerBase
@@ -23,6 +27,12 @@ namespace MyAPITest.Controllers
             _logger = logger;
         }
 
+        /// <summary>
+        /// Get weather forecast information.
+        /// </summary>
+        /// <returns>
+        /// JSON object
+        /// </returns>
         [HttpGet]
         public IEnumerable<WeatherForecast> Get()
         {

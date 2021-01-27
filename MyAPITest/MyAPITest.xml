@@ -1,0 +1,182 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MyAPITest</name>
+    </assembly>
+    <members>
+        <member name="T:MyAPITest.Controllers.WeatherForecastController">
+            <summary>
+            WeatherForecastController
+            </summary>
+            <seealso cref="T:Microsoft.AspNetCore.Mvc.ControllerBase" />
+        </member>
+        <member name="M:MyAPITest.Controllers.WeatherForecastController.Get">
+            <summary>
+            Get weather forecast information.
+            </summary>
+            <returns>
+            JSON object
+            </returns>
+        </member>
+        <member name="T:MyAPITest.Models.APIContext">
+            <summary>
+            APIContext
+            </summary>
+            <seealso cref="T:Microsoft.EntityFrameworkCore.DbContext" />
+        </member>
+        <member name="M:MyAPITest.Models.APIContext.#ctor(Microsoft.EntityFrameworkCore.DbContextOptions{MyAPITest.Models.APIContext})">
+            <summary>
+            Initializes a new instance of the <see cref="T:MyAPITest.Models.APIContext"/> class.
+            </summary>
+            <param name="options">The options.</param>
+        </member>
+        <member name="P:MyAPITest.Models.APIContext.User">
+            <summary>
+            Gets or sets the user.
+            </summary>
+            <value>
+            The user.
+            </value>
+        </member>
+        <member name="P:MyAPITest.Models.APIContext.Department">
+            <summary>
+            Gets or sets the department.
+            </summary>
+            <value>
+            The department.
+            </value>
+        </member>
+        <member name="P:MyAPITest.Models.APIContext.UserDepartment">
+            <summary>
+            Gets or sets the user department.
+            </summary>
+            <value>
+            The user department.
+            </value>
+        </member>
+        <member name="T:MyAPITest.Models.Department">
+            <summary>
+            Department entity
+            </summary>
+        </member>
+        <member name="P:MyAPITest.Models.Department.Id">
+            <summary>
+            Gets or sets the identifier.
+            </summary>
+            <value>
+            The identifier.
+            </value>
+        </member>
+        <member name="P:MyAPITest.Models.Department.Name">
+            <summary>
+            Gets or sets the name.
+            </summary>
+            <value>
+            The name.
+            </value>
+        </member>
+        <member name="P:MyAPITest.Models.Department.Level">
+            <summary>
+            Gets or sets the level.
+            </summary>
+            <value>
+            The level.
+            </value>
+        </member>
+        <member name="P:MyAPITest.Models.Department.Bedrooms">
+            <summary>
+            Gets or sets the bedrooms.
+            </summary>
+            <value>
+            The bedrooms.
+            </value>
+        </member>
+        <member name="T:MyAPITest.Models.User">
+            <summary>
+            User entity
+            </summary>
+        </member>
+        <member name="P:MyAPITest.Models.User.Id">
+            <summary>
+            Gets or sets the identifier.
+            </summary>
+            <value>
+            The identifier.
+            </value>
+        </member>
+        <member name="P:MyAPITest.Models.User.Name">
+            <summary>
+            Gets or sets the name.
+            </summary>
+            <value>
+            The name.
+            </value>
+        </member>
+        <member name="P:MyAPITest.Models.User.Age">
+            <summary>
+            Gets or sets the age.
+            </summary>
+            <value>
+            The age.
+            </value>
+        </member>
+        <member name="T:MyAPITest.Models.UserDepartment">
+            <summary>
+            UserDeparment entity
+            </summary>
+        </member>
+        <member name="P:MyAPITest.Models.UserDepartment.Id">
+            <summary>
+            Gets or sets the identifier.
+            </summary>
+            <value>
+            The identifier.
+            </value>
+        </member>
+        <member name="P:MyAPITest.Models.UserDepartment.UserId">
+            <summary>
+            Gets or sets the user identifier.
+            </summary>
+            <value>
+            The user identifier.
+            </value>
+        </member>
+        <member name="P:MyAPITest.Models.UserDepartment.DepartmentId">
+            <summary>
+            Gets or sets the deparment identifier.
+            </summary>
+            <value>
+            The deparment identifier.
+            </value>
+        </member>
+        <member name="P:MyAPITest.Models.UserDepartment.User">
+            <summary>
+            Gets or sets the user.
+            </summary>
+            <value>
+            The user.
+            </value>
+        </member>
+        <member name="P:MyAPITest.Models.UserDepartment.Department">
+            <summary>
+            Gets or sets the department.
+            </summary>
+            <value>
+            The department.
+            </value>
+        </member>
+        <member name="M:MyAPITest.Startup.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            This method gets called by the runtime. Use this method to add services to the container.
+            </summary>
+            <param name="services">The services.</param>
+        </member>
+        <member name="M:MyAPITest.Startup.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IWebHostEnvironment)">
+            <summary>
+            This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+            </summary>
+            <param name="app">The application.</param>
+            <param name="env">The env.</param>
+        </member>
+    </members>
+</doc>
