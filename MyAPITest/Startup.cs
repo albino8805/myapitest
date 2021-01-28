@@ -7,7 +7,10 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using MyAPITest.Models;
 using Microsoft.EntityFrameworkCore;
-
+using MyAPITest.Manager.Interface;
+using MyAPITest.Manager;
+using MyAPITest.Repository.Interfaces;
+using MyAPITest.Repository;
 
 namespace MyAPITest
 {
@@ -31,6 +34,9 @@ namespace MyAPITest
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddControllers();
+
+            services.AddScoped(typeof(IUserManager), typeof(UserManager));
+            services.AddScoped(typeof(IUserRepository), typeof(UserRepository));
 
             services.AddSwaggerGen(c =>
             {

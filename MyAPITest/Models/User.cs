@@ -10,17 +10,8 @@ namespace MyAPITest.Models
     /// <summary>
     /// User entity
     /// </summary>
-    public class User
-    {
-        /// <summary>
-        /// Gets or sets the identifier.
-        /// </summary>
-        /// <value>
-        /// The identifier.
-        /// </value>
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id { get; set; }
+    public class User: BaseEntity
+    {        
         /// <summary>
         /// Gets or sets the name.
         /// </summary>
@@ -36,6 +27,6 @@ namespace MyAPITest.Models
         /// <value>
         /// The age.
         /// </value>
-        public Nullable<int> Age { get; set; }
+        public Nullable<int> Age { get; set; }        
     }
 }

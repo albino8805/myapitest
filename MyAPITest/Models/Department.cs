@@ -10,17 +10,8 @@ namespace MyAPITest.Models
     /// <summary>
     /// Department entity
     /// </summary>
-    public class Department
+    public class Department: BaseEntity
     {
-        /// <summary>
-        /// Gets or sets the identifier.
-        /// </summary>
-        /// <value>
-        /// The identifier.
-        /// </value>
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id { get; set; }
         /// <summary>
         /// Gets or sets the name.
         /// </summary>
