@@ -37,6 +37,6 @@ namespace MyAPITest.ViewModels
         /// <value>
         /// The updated at.
         /// </value>
-        public DateTime UpdatedAt { get; set; }
+        public DateTime? UpdatedAt { get; set; }
     }
 }

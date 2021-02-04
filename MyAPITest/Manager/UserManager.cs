@@ -5,99 +5,90 @@ using MyAPITest.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace MyAPITest.Manager
 {
     /// <summary>
     /// UserManager
     /// </summary>
-    public class UserManager : IUserManager
+    public class UserManager : BaseManager<User, UserViewModel>, IUserManager
     {
         private IUserRepository _repository;
 
-        private const bool Active = true; 
+        private const bool Active = true;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="UserManager"/> class.
         /// </summary>
         /// <param name="repository">The repository.</param>
-        public UserManager(IUserRepository repository)
+        public UserManager(IUserRepository repository) : base(repository)
         {
             _repository = repository;
         }
-
         /// <summary>
-        /// Gets this instance.
+        /// Prepares the add data.
         /// </summary>
+        /// <param name="viewModel">The view model.</param>
         /// <returns></returns>
-        public List<UserViewModel> Get()
+        /// <exception cref="NotImplementedException"></exception>
+        public override User PrepareAddData(UserViewModel viewModel)
         {
-            var entities = _repository.Get();
-
-            return entities.Select(p => new UserViewModel()
-            {
-                Id = p.Id,
-                Name = p.Name,
-                Age = p.Age,
-                Active = p.Active
-            }).ToList();
+            return new User() { 
+                Name = viewModel.Name,
+                Age = viewModel.Age,
+                Active = Active,
+                CreatedAt = DateTime.Now
+            };
         }
         /// <summary>
-        /// Gets the by identifier.
+        /// Prepares the update data.
         /// </summary>
-        /// <param name="id">The identifier.</param>
+        /// <param name="entity">The entity.</param>
+        /// <param name="viewModel">The view model.</param>
         /// <returns></returns>
-        public UserViewModel GetById(int id)
+        /// <exception cref="NotImplementedException"></exception>
+        public override User PrepareUpdateData(User entity, UserViewModel viewModel)
         {
-            var entity = _repository.GetById(id);
+            entity.Name = viewModel.Name;
+            entity.Age = viewModel.Age;
+            entity.UpdatedAt = DateTime.Now;
 
+            return entity;
+        }
+        /// <summary>
+        /// Prepares the single return.
+        /// </summary>
+        /// <param name="entity">The entity.</param>
+        /// <returns></returns>
+        /// <exception cref="NotImplementedException"></exception>
+        public override UserViewModel PrepareSingleReturn(User entity)
+        {
             return new UserViewModel()
             {
                 Id = entity.Id,
                 Name = entity.Name,
                 Age = entity.Age,
-                Active = entity.Active
+                Active = entity.Active,
+                CreatedAt = entity.CreatedAt,
+                UpdatedAt = entity.UpdatedAt
             };
         }
         /// <summary>
-        /// Posts the specified entity.
+        /// Prepares the multiple return.
         /// </summary>
-        /// <param name="model">The entity.</param>
+        /// <param name="entities">The entities.</param>
         /// <returns></returns>
-        public int Post(UserViewModel model)
+        /// <exception cref="NotImplementedException"></exception>
+        public override List<UserViewModel> PrepareMultipleReturn(List<User> entities)
         {
-            User entity = new User();
-
-            entity.Name = model.Name;
-            entity.Age = model.Age;
-            entity.Active = Active;
-            entity.CreatedAt = DateTime.Now;
-
-            return _repository.Post(entity);
-        }
-        /// <summary>
-        /// Patches the specified entity.
-        /// </summary>
-        /// <param name="id">The identifier.</param>
-        /// <param name="model">The entity.</param>
-        public void Patch(int id, UserViewModel model)
-        {
-            User entity = _repository.GetById(id);
-
-            entity.Name = model.Name;
-            entity.Age = model.Age;
-            entity.UpdatedAt = DateTime.Now;
-
-            _repository.Patch(entity);
-        }
-        /// <summary>
-        /// Deletes the specified identifier.
-        /// </summary>
-        /// <param name="id">The identifier.</param>
-        public void Delete(int id)
-        {
-          _repository.Delete(id);
+            return entities.Select(p => new UserViewModel() {
+                Id = p.Id,
+                Name = p.Name,
+                Age = p.Age,
+                Active = p.Active,
+                CreatedAt = p.CreatedAt,
+                UpdatedAt = p.UpdatedAt
+            }).ToList();
         }
     }
 }

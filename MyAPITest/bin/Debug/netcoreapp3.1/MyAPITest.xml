@@ -49,56 +49,157 @@
             </summary>
             <param name="id">The identifier.</param>
         </member>
-        <member name="T:MyAPITest.Controllers.WeatherForecastController">
+        <member name="T:MyAPITest.Manager.BaseManager`2">
             <summary>
-            WeatherForecastController
+            BaseManager
             </summary>
-            <seealso cref="T:Microsoft.AspNetCore.Mvc.ControllerBase" />
+            <typeparam name="TEntity">The type of the entity.</typeparam>
+            <typeparam name="UViewModel">The type of the view model.</typeparam>
         </member>
-        <member name="M:MyAPITest.Controllers.WeatherForecastController.Get">
+        <member name="M:MyAPITest.Manager.BaseManager`2.#ctor(MyAPITest.Repository.Interfaces.IBaseRepository{`0})">
             <summary>
-            Get weather forecast information.
+            Initializes a new instance of the <see cref="!:BaseRepository&lt;TEntity&gt;" /> class.
             </summary>
-            <returns>
-            JSON object
-            </returns>
+            <param name="repository">The repository.</param>
         </member>
-        <member name="T:MyAPITest.Manager.Interface.IUserManager">
-            <summary>
-            IUserManager
-            </summary>
-        </member>
-        <member name="M:MyAPITest.Manager.Interface.IUserManager.Get">
+        <member name="M:MyAPITest.Manager.BaseManager`2.Get">
             <summary>
             Gets this instance.
             </summary>
             <returns></returns>
         </member>
-        <member name="M:MyAPITest.Manager.Interface.IUserManager.GetById(System.Int32)">
+        <member name="M:MyAPITest.Manager.BaseManager`2.GetById(System.Int32)">
             <summary>
             Gets the by identifier.
             </summary>
             <param name="id">The identifier.</param>
             <returns></returns>
         </member>
-        <member name="M:MyAPITest.Manager.Interface.IUserManager.Post(MyAPITest.ViewModels.UserViewModel)">
+        <member name="M:MyAPITest.Manager.BaseManager`2.Patch(System.Int32,`1)">
+            <summary>
+            Patches the specified entity.
+            </summary>
+            <param name="id"></param>
+            <param name="model">The entity.</param>
+        </member>
+        <member name="M:MyAPITest.Manager.BaseManager`2.Post(`1)">
             <summary>
             Posts the specified entity.
             </summary>
             <param name="model">The entity.</param>
             <returns></returns>
         </member>
-        <member name="M:MyAPITest.Manager.Interface.IUserManager.Patch(System.Int32,MyAPITest.ViewModels.UserViewModel)">
+        <member name="M:MyAPITest.Manager.BaseManager`2.Delete(System.Int32)">
+            <summary>
+            Deletes the specified identifier.
+            </summary>
+            <param name="id">The identifier.</param>
+        </member>
+        <member name="M:MyAPITest.Manager.BaseManager`2.PrepareAddData(`1)">
+            <summary>
+            Prepares the add data.
+            </summary>
+            <param name="viewModel">The view model.</param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:MyAPITest.Manager.BaseManager`2.PrepareUpdateData(`0,`1)">
+            <summary>
+            Prepares the update data.
+            </summary>
+            <param name="entity">The entity.</param>
+            <param name="viewModel">The view model.</param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:MyAPITest.Manager.BaseManager`2.PrepareSingleReturn(`0)">
+            <summary>
+            Prepares the single return.
+            </summary>
+            <param name="entity">The entity.</param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:MyAPITest.Manager.BaseManager`2.PrepareMultipleReturn(System.Collections.Generic.List{`0})">
+            <summary>
+            Prepares the multiple return.
+            </summary>
+            <param name="entities">The entities.</param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="T:MyAPITest.Manager.Interface.IBaseManager`2">
+            <summary>
+            Base Manager
+            </summary>
+            <typeparam name="TEntity">The type of the entity.</typeparam>
+            <typeparam name="UViewModel">The type of the view model.</typeparam>
+        </member>
+        <member name="M:MyAPITest.Manager.Interface.IBaseManager`2.Get">
+            <summary>
+            Gets this instance.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MyAPITest.Manager.Interface.IBaseManager`2.GetById(System.Int32)">
+            <summary>
+            Gets the by identifier.
+            </summary>
+            <param name="id">The identifier.</param>
+            <returns></returns>
+        </member>
+        <member name="M:MyAPITest.Manager.Interface.IBaseManager`2.Post(`1)">
+            <summary>
+            Posts the specified entity.
+            </summary>
+            <param name="model">The entity.</param>
+            <returns></returns>
+        </member>
+        <member name="M:MyAPITest.Manager.Interface.IBaseManager`2.Patch(System.Int32,`1)">
             <summary>
             Patches the specified entity.
             </summary>
             <param name="model">The entity.</param>
         </member>
-        <member name="M:MyAPITest.Manager.Interface.IUserManager.Delete(System.Int32)">
+        <member name="M:MyAPITest.Manager.Interface.IBaseManager`2.Delete(System.Int32)">
             <summary>
             Deletes the specified identifier.
             </summary>
             <param name="id">The identifier.</param>
+        </member>
+        <member name="M:MyAPITest.Manager.Interface.IBaseManager`2.PrepareAddData(`1)">
+            <summary>
+            Prepares the add data.
+            </summary>
+            <param name="viewModel">The view model.</param>
+            <returns></returns>
+        </member>
+        <member name="M:MyAPITest.Manager.Interface.IBaseManager`2.PrepareUpdateData(`0,`1)">
+            <summary>
+            Prepares the update data.
+            </summary>
+            <param name="entity">The entity.</param>
+            <param name="viewModel">The view model.</param>
+            <returns></returns>
+        </member>
+        <member name="M:MyAPITest.Manager.Interface.IBaseManager`2.PrepareSingleReturn(`0)">
+            <summary>
+            Prepares the single return.
+            </summary>
+            <param name="entity">The entity.</param>
+            <returns></returns>
+        </member>
+        <member name="M:MyAPITest.Manager.Interface.IBaseManager`2.PrepareMultipleReturn(System.Collections.Generic.List{`0})">
+            <summary>
+            Prepares the multiple return.
+            </summary>
+            <param name="entities">The entities.</param>
+            <returns></returns>
+        </member>
+        <member name="T:MyAPITest.Manager.Interface.IUserManager">
+            <summary>
+            IUserManager
+            </summary>
         </member>
         <member name="T:MyAPITest.Manager.UserManager">
             <summary>
@@ -111,38 +212,38 @@
             </summary>
             <param name="repository">The repository.</param>
         </member>
-        <member name="M:MyAPITest.Manager.UserManager.Get">
+        <member name="M:MyAPITest.Manager.UserManager.PrepareAddData(MyAPITest.ViewModels.UserViewModel)">
             <summary>
-            Gets this instance.
+            Prepares the add data.
             </summary>
+            <param name="viewModel">The view model.</param>
             <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
         </member>
-        <member name="M:MyAPITest.Manager.UserManager.GetById(System.Int32)">
+        <member name="M:MyAPITest.Manager.UserManager.PrepareUpdateData(MyAPITest.Models.User,MyAPITest.ViewModels.UserViewModel)">
             <summary>
-            Gets the by identifier.
+            Prepares the update data.
             </summary>
-            <param name="id">The identifier.</param>
+            <param name="entity">The entity.</param>
+            <param name="viewModel">The view model.</param>
             <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
         </member>
-        <member name="M:MyAPITest.Manager.UserManager.Post(MyAPITest.ViewModels.UserViewModel)">
+        <member name="M:MyAPITest.Manager.UserManager.PrepareSingleReturn(MyAPITest.Models.User)">
             <summary>
-            Posts the specified entity.
+            Prepares the single return.
             </summary>
-            <param name="model">The entity.</param>
+            <param name="entity">The entity.</param>
             <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
         </member>
-        <member name="M:MyAPITest.Manager.UserManager.Patch(System.Int32,MyAPITest.ViewModels.UserViewModel)">
+        <member name="M:MyAPITest.Manager.UserManager.PrepareMultipleReturn(System.Collections.Generic.List{MyAPITest.Models.User})">
             <summary>
-            Patches the specified entity.
+            Prepares the multiple return.
             </summary>
-            <param name="id">The identifier.</param>
-            <param name="model">The entity.</param>
-        </member>
-        <member name="M:MyAPITest.Manager.UserManager.Delete(System.Int32)">
-            <summary>
-            Deletes the specified identifier.
-            </summary>
-            <param name="id">The identifier.</param>
+            <param name="entities">The entities.</param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
         </member>
         <member name="T:MyAPITest.Models.APIContext">
             <summary>
@@ -304,42 +405,131 @@
             The department.
             </value>
         </member>
-        <member name="T:MyAPITest.Repository.Interfaces.IUserRepository">
+        <member name="T:MyAPITest.Repository.BaseRepository`1">
             <summary>
-            IUser
+            Base Repository
             </summary>
+            <typeparam name="TEntity">The type of the entity.</typeparam>
+            <seealso cref="T:MyAPITest.Repository.Interfaces.IBaseRepository`1" />
         </member>
-        <member name="M:MyAPITest.Repository.Interfaces.IUserRepository.Get">
+        <member name="M:MyAPITest.Repository.BaseRepository`1.#ctor(MyAPITest.Models.APIContext)">
+            <summary>
+            Initializes a new instance of the <see cref="T:MyAPITest.Repository.BaseRepository`1"/> class.
+            </summary>
+            <param name="context">The context.</param>
+        </member>
+        <member name="M:MyAPITest.Repository.BaseRepository`1.Get">
             <summary>
             Gets this instance.
             </summary>
             <returns></returns>
         </member>
-        <member name="M:MyAPITest.Repository.Interfaces.IUserRepository.GetById(System.Int32)">
+        <member name="M:MyAPITest.Repository.BaseRepository`1.GetById(System.Int32)">
             <summary>
             Gets the by identifier.
             </summary>
             <param name="id">The identifier.</param>
             <returns></returns>
         </member>
-        <member name="M:MyAPITest.Repository.Interfaces.IUserRepository.Post(MyAPITest.Models.User)">
+        <member name="M:MyAPITest.Repository.BaseRepository`1.Post(`0)">
             <summary>
             Posts the specified entity.
             </summary>
-            <param name="user">The entity.</param>
+            <param name="entity">The entity.</param>
             <returns></returns>
         </member>
-        <member name="M:MyAPITest.Repository.Interfaces.IUserRepository.Patch(MyAPITest.Models.User)">
+        <member name="M:MyAPITest.Repository.BaseRepository`1.Patch(`0)">
             <summary>
             Patches the specified entity.
             </summary>
-            <param name="user">The entity.</param>
+            <param name="entity">The entity.</param>
         </member>
-        <member name="M:MyAPITest.Repository.Interfaces.IUserRepository.Delete(System.Int32)">
+        <member name="M:MyAPITest.Repository.BaseRepository`1.Delete(System.Int32)">
             <summary>
             Deletes the specified identifier.
             </summary>
             <param name="id">The identifier.</param>
+        </member>
+        <member name="T:MyAPITest.Repository.DepartmentRepository">
+            <summary>
+            Department Repository
+            </summary>
+            <seealso cref="!:MyAPITest.Repository.BaseRepository&lt;MyAPITest.Models.Department&gt;" />
+            <seealso cref="T:MyAPITest.Repository.Interfaces.IDepartmentRepository" />
+        </member>
+        <member name="M:MyAPITest.Repository.DepartmentRepository.#ctor(MyAPITest.Models.APIContext)">
+            <summary>
+            Initializes a new instance of the <see cref="T:MyAPITest.Repository.DepartmentRepository"/> class.
+            </summary>
+            <param name="context">The context.</param>
+        </member>
+        <member name="T:MyAPITest.Repository.Interfaces.IBaseRepository`1">
+            <summary>
+            Base Repository
+            </summary>
+            <typeparam name="TEntity">The type of the entity.</typeparam>
+        </member>
+        <member name="M:MyAPITest.Repository.Interfaces.IBaseRepository`1.Get">
+            <summary>
+            Gets this instance.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MyAPITest.Repository.Interfaces.IBaseRepository`1.GetById(System.Int32)">
+            <summary>
+            Gets the by identifier.
+            </summary>
+            <param name="id">The identifier.</param>
+            <returns></returns>
+        </member>
+        <member name="M:MyAPITest.Repository.Interfaces.IBaseRepository`1.Post(`0)">
+            <summary>
+            Posts the specified entity.
+            </summary>
+            <param name="entity">The entity.</param>
+            <returns></returns>
+        </member>
+        <member name="M:MyAPITest.Repository.Interfaces.IBaseRepository`1.Patch(`0)">
+            <summary>
+            Patches the specified entity.
+            </summary>
+            <param name="entity">The entity.</param>
+        </member>
+        <member name="M:MyAPITest.Repository.Interfaces.IBaseRepository`1.Delete(System.Int32)">
+            <summary>
+            Deletes the specified identifier.
+            </summary>
+            <param name="id">The identifier.</param>
+        </member>
+        <member name="T:MyAPITest.Repository.Interfaces.IDepartmentRepository">
+            <summary>
+            Department Repository
+            </summary>
+            <seealso cref="!:MyAPITest.Repository.Interfaces.IBaseRepository&lt;MyAPITest.Models.Department&gt;" />
+        </member>
+        <member name="T:MyAPITest.Repository.Interfaces.IUserDepartment">
+            <summary>
+            User Department
+            </summary>
+            <seealso cref="!:MyAPITest.Repository.Interfaces.IBaseRepository&lt;MyAPITest.Models.UserDepartment&gt;" />
+        </member>
+        <member name="T:MyAPITest.Repository.Interfaces.IUserRepository">
+            <summary>
+            IUser
+            </summary>
+        </member>
+        <member name="T:MyAPITest.Repository.UserDepartmentRepository">
+            <summary>
+            User Department
+            </summary>
+            <seealso cref="!:MyAPITest.Repository.BaseRepository&lt;MyAPITest.Models.UserDepartment&gt;" />
+            <seealso cref="T:MyAPITest.Repository.Interfaces.IUserDepartment" />
+        </member>
+        <member name="M:MyAPITest.Repository.UserDepartmentRepository.#ctor(MyAPITest.Models.APIContext)">
+            <summary>
+            Initializes a new instance of the <see cref="T:MyAPITest.Repository.UserDepartmentRepository"/> class.
+            </summary>
+            <param name="context">The context.</param>
         </member>
         <member name="T:MyAPITest.Repository.UserRepository">
             <summary>
@@ -352,38 +542,6 @@
             Initializes a new instance of the <see cref="T:MyAPITest.Repository.UserRepository"/> class.
             </summary>
             <param name="context">The context.</param>
-        </member>
-        <member name="M:MyAPITest.Repository.UserRepository.Get">
-            <summary>
-            Gets this instance.
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:MyAPITest.Repository.UserRepository.GetById(System.Int32)">
-            <summary>
-            Gets the by identifier.
-            </summary>
-            <param name="id">The identifier.</param>
-            <returns></returns>
-        </member>
-        <member name="M:MyAPITest.Repository.UserRepository.Post(MyAPITest.Models.User)">
-            <summary>
-            Posts the specified entity.
-            </summary>
-            <param name="user">The entity.</param>
-            <returns></returns>
-        </member>
-        <member name="M:MyAPITest.Repository.UserRepository.Patch(MyAPITest.Models.User)">
-            <summary>
-            Patches the specified entity.
-            </summary>
-            <param name="user">The entity.</param>
-        </member>
-        <member name="M:MyAPITest.Repository.UserRepository.Delete(System.Int32)">
-            <summary>
-            Deletes the specified identifier.
-            </summary>
-            <param name="id">The identifier.</param>
         </member>
         <member name="M:MyAPITest.Startup.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
             <summary>

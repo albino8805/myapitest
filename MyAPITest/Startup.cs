@@ -35,8 +35,9 @@ namespace MyAPITest
 
             services.AddControllers();
 
-            services.AddScoped(typeof(IUserManager), typeof(UserManager));
             services.AddScoped(typeof(IUserRepository), typeof(UserRepository));
+            services.AddScoped(typeof(IUserManager), typeof(UserManager));
+            services.AddScoped(typeof(IDepartmentRepository), typeof(DepartmentRepository));
 
             services.AddSwaggerGen(c =>
             {

@@ -9131,19 +9131,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\almara07\\.nuget\\packages\\": {}
+    "C:\\Users\\Albino\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\projects\\MyAPITest\\MyAPITest\\MyAPITest.csproj",
+      "projectUniqueName": "C:\\Projects\\MyAPITest\\myapitest\\MyAPITest\\MyAPITest.csproj",
       "projectName": "MyAPITest",
-      "projectPath": "C:\\projects\\MyAPITest\\MyAPITest\\MyAPITest.csproj",
-      "packagesPath": "C:\\Users\\almara07\\.nuget\\packages\\",
-      "outputPath": "C:\\projects\\MyAPITest\\MyAPITest\\obj\\",
+      "projectPath": "C:\\Projects\\MyAPITest\\myapitest\\MyAPITest\\MyAPITest.csproj",
+      "packagesPath": "C:\\Users\\Albino\\.nuget\\packages\\",
+      "outputPath": "C:\\Projects\\MyAPITest\\myapitest\\MyAPITest\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      ],
       "configFilePaths": [
-        "C:\\Users\\almara07\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Albino\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -9216,7 +9220,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.401\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.405\\RuntimeIdentifierGraph.json"
       }
     }
   }
