@@ -29,9 +29,9 @@ namespace MyAPITest.Manager
         /// Gets this instance.
         /// </summary>
         /// <returns></returns>
-        public List<UViewModel> Get()
+        public async Task<List<UViewModel>> Get()
         {
-            var entities = _repository.Get();
+            var entities = await _repository.Get();
 
             return PrepareMultipleReturn(entities);
         }
@@ -41,9 +41,9 @@ namespace MyAPITest.Manager
         /// </summary>
         /// <param name="id">The identifier.</param>
         /// <returns></returns>
-        public UViewModel GetById(int id)
+        public async Task<UViewModel> GetById(int id)
         {
-            var entity = _repository.GetById(id);
+            var entity = await _repository.GetById(id);
 
             return PrepareSingleReturn(entity);
         }
@@ -53,9 +53,9 @@ namespace MyAPITest.Manager
         /// </summary>
         /// <param name="id"></param>
         /// <param name="model">The entity.</param>
-        public void Patch(int id, UViewModel model)
+        public async Task Patch(int id, UViewModel model)
         {
-            var entity = _repository.GetById(id);
+            var entity = await _repository.GetById(id);
 
             var updatedEntity = PrepareUpdateData(entity, model);
 
@@ -67,11 +67,11 @@ namespace MyAPITest.Manager
         /// </summary>
         /// <param name="model">The entity.</param>
         /// <returns></returns>
-        public int Post(UViewModel model)
+        public async Task<int> Post(UViewModel model)
         {
             var entity = PrepareAddData(model);
 
-            return _repository.Post(entity);
+            return await _repository.Post(entity);
         }
 
         /// <summary>

@@ -1,4 +1,5 @@
-﻿using MyAPITest.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using MyAPITest.Models;
 using MyAPITest.Repository.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -29,50 +30,50 @@ namespace MyAPITest.Repository
         /// Gets this instance.
         /// </summary>
         /// <returns></returns>
-        public List<TEntity> Get()
+        public async Task<List<TEntity>> Get()
         {
-            return _context.Set<TEntity>().ToList();
+            return await _context.Set<TEntity>().ToListAsync();
         }
         /// <summary>
         /// Gets the by identifier.
         /// </summary>
         /// <param name="id">The identifier.</param>
         /// <returns></returns>
-        public TEntity GetById(int id)
+        public async Task<TEntity> GetById(int id)
         {
-            return _context.Set<TEntity>().Find(id);
+            return await _context.Set<TEntity>().FindAsync(id);
         }
         /// <summary>
         /// Posts the specified entity.
         /// </summary>
         /// <param name="entity">The entity.</param>
         /// <returns></returns>
-        public int Post(TEntity entity)
+        public async Task<int> Post(TEntity entity)
         {
-            _context.Set<TEntity>().Add(entity);
+            await _context.Set<TEntity>().AddAsync(entity);
 
-            return _context.SaveChanges();
+            return await _context.SaveChangesAsync();
         }
         /// <summary>
         /// Patches the specified entity.
         /// </summary>
         /// <param name="entity">The entity.</param>
-        public void Patch(TEntity entity)
+        public async Task Patch(TEntity entity)
         {
             _context.Set<TEntity>().Update(entity);
 
-            _context.SaveChanges();
+            _context.SaveChangesAsync();
         }
         /// <summary>
         /// Deletes the specified identifier.
         /// </summary>
         /// <param name="id">The identifier.</param>
-        public void Delete(int id)
+        public async Task Delete(int id)
         {
             var toRemove = _context.Set<TEntity>().Find(id);
             _context.Set<TEntity>().Remove(toRemove);
 
-            _context.SaveChanges();
+            _context.SaveChangesAsync();
         }
     }
 }

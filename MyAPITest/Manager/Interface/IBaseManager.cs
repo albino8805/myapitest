@@ -16,24 +16,24 @@ namespace MyAPITest.Manager.Interface
         /// Gets this instance.
         /// </summary>
         /// <returns></returns>
-        List<UViewModel> Get();
+        Task<List<UViewModel>> Get();
         /// <summary>
         /// Gets the by identifier.
         /// </summary>
         /// <param name="id">The identifier.</param>
         /// <returns></returns>
-        UViewModel GetById(int id);
+        Task<UViewModel> GetById(int id);
         /// <summary>
         /// Posts the specified entity.
         /// </summary>
         /// <param name="model">The entity.</param>
         /// <returns></returns>
-        int Post(UViewModel model);
+        Task<int> Post(UViewModel model);
         /// <summary>
         /// Patches the specified entity.
         /// </summary>
         /// <param name="model">The entity.</param>
-        void Patch(int id, UViewModel model);
+        Task Patch(int id, UViewModel model);
         /// <summary>
         /// Deletes the specified identifier.
         /// </summary>

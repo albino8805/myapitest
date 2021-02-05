@@ -4,6 +4,12 @@
         <name>MyAPITest</name>
     </assembly>
     <members>
+        <member name="M:MyAPITest.Controllers.LoginController.#ctor(Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Initializes a new instance of the <see cref="T:MyAPITest.Controllers.LoginController"/> class.
+            </summary>
+            <param name="config">The configuration.</param>
+        </member>
         <member name="T:MyAPITest.Controllers.UserController">
             <summary>
             UserController
@@ -48,6 +54,49 @@
             Deletes the specified identifier.
             </summary>
             <param name="id">The identifier.</param>
+        </member>
+        <member name="T:MyAPITest.Helpers.Filters.IsValidToken">
+            <summary>
+            
+            </summary>
+            <seealso cref="T:Microsoft.AspNetCore.Mvc.Filters.ActionFilterAttribute" />
+            <seealso cref="T:Microsoft.AspNetCore.Mvc.Filters.IAsyncActionFilter" />
+        </member>
+        <member name="M:MyAPITest.Helpers.Filters.IsValidToken.OnActionExecutionAsync(Microsoft.AspNetCore.Mvc.Filters.ActionExecutingContext,Microsoft.AspNetCore.Mvc.Filters.ActionExecutionDelegate)">
+            <summary>
+            </summary>
+            <param name="context"></param>
+            <param name="next"></param>
+            <inheritdoc />
+        </member>
+        <member name="T:MyAPITest.Helpers.TokenHelper">
+            <summary>
+            TokenHelper
+            </summary>
+        </member>
+        <member name="M:MyAPITest.Helpers.TokenHelper.Decode(System.String)">
+            <summary>
+            Decodes the specified token.
+            </summary>
+            <param name="Token">The token.</param>
+            <returns></returns>
+        </member>
+        <member name="M:MyAPITest.Helpers.TokenHelper.GetToken(Microsoft.AspNetCore.Http.HttpRequest)">
+            <summary>
+            Gets the token.
+            </summary>
+            <param name="request">The request.</param>
+            <returns></returns>
+            <exception cref="T:System.UnauthorizedAccessException">
+            </exception>
+        </member>
+        <member name="M:MyAPITest.Helpers.TokenHelper.GetValueClaim(System.String,System.String)">
+            <summary>
+            Gets the value claim.
+            </summary>
+            <param name="token">The token.</param>
+            <param name="claimName">Name of the claim.</param>
+            <returns></returns>
         </member>
         <member name="T:MyAPITest.Manager.BaseManager`2">
             <summary>
@@ -543,6 +592,17 @@
             </summary>
             <param name="context">The context.</param>
         </member>
+        <member name="T:MyAPITest.Startup">
+            <summary>
+            Startup
+            </summary>
+        </member>
+        <member name="M:MyAPITest.Startup.#ctor(Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Initializes a new instance of the <see cref="T:MyAPITest.Startup"/> class.
+            </summary>
+            <param name="configuration">The configuration.</param>
+        </member>
         <member name="M:MyAPITest.Startup.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
             <summary>
             This method gets called by the runtime. Use this method to add services to the container.
@@ -555,6 +615,51 @@
             </summary>
             <param name="app">The application.</param>
             <param name="env">The env.</param>
+        </member>
+        <member name="T:MyAPITest.Utils.ResultMessage">
+            <summary>
+            ResultMessage
+            </summary>
+        </member>
+        <member name="P:MyAPITest.Utils.ResultMessage.Success">
+            <summary>
+            Gets or sets the success.
+            </summary>
+            <value>
+            The success.
+            </value>
+        </member>
+        <member name="P:MyAPITest.Utils.ResultMessage.Failure">
+            <summary>
+            Gets or sets the failure.
+            </summary>
+            <value>
+            The failure.
+            </value>
+        </member>
+        <member name="P:MyAPITest.Utils.ResultMessage.Nologin">
+            <summary>
+            Gets or sets the nologin.
+            </summary>
+            <value>
+            The nologin.
+            </value>
+        </member>
+        <member name="P:MyAPITest.Utils.ResultMessage.Message">
+            <summary>
+            Gets or sets the message.
+            </summary>
+            <value>
+            The message.
+            </value>
+        </member>
+        <member name="P:MyAPITest.Utils.ResultMessage.oData">
+            <summary>
+            Gets or sets the o data.
+            </summary>
+            <value>
+            The o data.
+            </value>
         </member>
         <member name="T:MyAPITest.ViewModels.BaseViewModel">
             <summary>
@@ -620,6 +725,27 @@
             </summary>
             <value>
             The bedrooms.
+            </value>
+        </member>
+        <member name="T:MyAPITest.ViewModels.LoginViewModel">
+            <summary>
+            LoginViewModel
+            </summary>
+        </member>
+        <member name="P:MyAPITest.ViewModels.LoginViewModel.Email">
+            <summary>
+            Gets or sets the email.
+            </summary>
+            <value>
+            The email.
+            </value>
+        </member>
+        <member name="P:MyAPITest.ViewModels.LoginViewModel.Password">
+            <summary>
+            Gets or sets the password.
+            </summary>
+            <value>
+            The password.
             </value>
         </member>
         <member name="T:MyAPITest.ViewModels.UserDepartmentViewModel">

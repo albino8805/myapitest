@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using MyAPITest.Helpers.Filters;
 using MyAPITest.Manager.Interface;
 using MyAPITest.ViewModels;
 
@@ -14,6 +15,7 @@ namespace MyAPITest.Controllers
     /// UserController
     /// </summary>
     /// <seealso cref="Microsoft.AspNetCore.Mvc.ControllerBase" />
+    [IsValidToken]
     [Route("api/[controller]")]
     [ApiController]
     public class UserController : ControllerBase
@@ -34,9 +36,9 @@ namespace MyAPITest.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        public IEnumerable<UserViewModel> Get()
+        public async Task<IEnumerable<UserViewModel>> Get()
         {
-            return _manager.Get();
+            return await _manager.Get();
         }
 
 
@@ -46,9 +48,9 @@ namespace MyAPITest.Controllers
         /// <param name="id">The identifier.</param>
         /// <returns></returns>
         [HttpGet("{id}")]
-        public UserViewModel Get(int id)
+        public async Task<UserViewModel> Get(int id)
         {
-            return _manager.GetById(id);
+            return await _manager.GetById(id);
         }
 
         /// <summary>
@@ -56,9 +58,9 @@ namespace MyAPITest.Controllers
         /// </summary>
         /// <param name="value">The value.</param>
         [HttpPost]
-        public IActionResult Post([FromBody] UserViewModel user)
+        public async Task<IActionResult> Post([FromBody] UserViewModel user)
         {
-            _manager.Post(user);
+            await _manager.Post(user);
 
             return Ok();
         }

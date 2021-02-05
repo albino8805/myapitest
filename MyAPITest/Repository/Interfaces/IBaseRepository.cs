@@ -15,28 +15,28 @@ namespace MyAPITest.Repository.Interfaces
         /// Gets this instance.
         /// </summary>
         /// <returns></returns>
-        List<TEntity> Get();
+        Task<List<TEntity>> Get();
         /// <summary>
         /// Gets the by identifier.
         /// </summary>
         /// <param name="id">The identifier.</param>
         /// <returns></returns>
-        TEntity GetById(int id);
+        Task<TEntity> GetById(int id);
         /// <summary>
         /// Posts the specified entity.
         /// </summary>
         /// <param name="entity">The entity.</param>
         /// <returns></returns>
-        int Post(TEntity entity);
+        Task<int> Post(TEntity entity);
         /// <summary>
         /// Patches the specified entity.
         /// </summary>
         /// <param name="entity">The entity.</param>
-        void Patch(TEntity entity);
+        Task Patch(TEntity entity);
         /// <summary>
         /// Deletes the specified identifier.
         /// </summary>
         /// <param name="id">The identifier.</param>
-        void Delete(int id);
+        Task Delete(int id);
     }
 }

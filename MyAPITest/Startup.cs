@@ -11,11 +11,22 @@ using MyAPITest.Manager.Interface;
 using MyAPITest.Manager;
 using MyAPITest.Repository.Interfaces;
 using MyAPITest.Repository;
+using System.Text;
+using Microsoft.OpenApi.Models;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
 
 namespace MyAPITest
 {
+    /// <summary>
+    /// Startup
+    /// </summary>
     public class Startup
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Startup"/> class.
+        /// </summary>
+        /// <param name="configuration">The configuration.</param>
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -39,28 +50,53 @@ namespace MyAPITest
             services.AddScoped(typeof(IUserManager), typeof(UserManager));
             services.AddScoped(typeof(IDepartmentRepository), typeof(DepartmentRepository));
 
+            var key = Encoding.ASCII.GetBytes("ERMN05OPLoDvbTTa/QkqLNMI7cPLguaRyHzyg7n5qNBVjQmtBhz4SzYh4NBVCXi3KJHlSXKP+oi2+bXr6CUYTR==");
+
+            // Register the Swagger generator, defining 1 or more Swagger documents
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo
+                c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo { Title = "Swagger Documentation", Version = "Version 1.0" });
+                c.AddSecurityDefinition("Bearer",
+                   new OpenApiSecurityScheme
+                   {
+                       Name = "Authorization",
+                       Type = SecuritySchemeType.ApiKey,
+                       Scheme = "Bearer",
+                       In = ParameterLocation.Header,
+                       Description = "Please enter into field the word 'Bearer' following by space and JWT"
+                   });
+                c.AddSecurityRequirement(new OpenApiSecurityRequirement
                 {
-                    Title = "My API REST",
-                    Version = "v1"
+                    {
+                          new OpenApiSecurityScheme
+                            {
+                                Reference = new OpenApiReference
+                                {
+                                    Type = ReferenceType.SecurityScheme,
+                                    Id = "Bearer"
+                                }
+                            },
+                            new string[] {}
+                    }
                 });
-                //Obtenemos el directorio actual
-                var basePath = AppContext.BaseDirectory;
-                //Obtenemos el nombre de la dll por medio de reflexión
-                var assemblyName = System.Reflection.Assembly
-                              .GetEntryAssembly().GetName().Name;
-                //Al nombre del assembly le agregamos la extensión xml
-                var fileName = System.IO.Path
-                              .GetFileName(assemblyName + ".xml");
-                //Agregamos el Path, es importante utilizar el comando
-                // Path.Combine ya que entre windows y linux 
-                // rutas de los archivos
-                // En windows es por ejemplo c:/Uusuarios con / 
-                // y en linux es \usr con \
-                var xmlPath = Path.Combine(basePath, fileName);
-                c.IncludeXmlComments(xmlPath);
+            });
+
+            services.AddAuthentication(x =>
+            {
+                x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
+            .AddJwtBearer(x =>
+            {
+                x.RequireHttpsMetadata = false;
+                x.SaveToken = true;
+                x.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(key),
+                    ValidateIssuer = false,
+                    ValidateAudience = false
+                };
             });
         }
 
@@ -80,6 +116,8 @@ namespace MyAPITest
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseAuthentication();
 
             app.UseAuthorization();
 
